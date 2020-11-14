@@ -1,46 +1,43 @@
 package pl.pjatk.gameplay.model;
 
+
+;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Player {
-    private int id;
+
+    @Id
+    @GeneratedValue
+    private Long id;
     private String nickname;
     private int health;
     private int attack;
 
     public Player() {
-
     }
 
-    public Player(int attack) {
-        this.attack = attack;
+    public Player(Long Id, String nickname, int health, int attack) {
+        this.id= Id;
+        this.nickname= nickname;
+        this.attack= attack;
+        this.health= health;
+    }
+    public Player( String nickname, int health, int attack) {
+        this.nickname= nickname;
+        this.attack= attack;
+        this.health= health;
     }
 
-    public Player(int id, String nick, int hp, int ap){
-        this.id= id;
-        nickname=nick;
-        health= hp;
-        attack= ap;
+    public Long getId() {
+        return id;
     }
 
-    @Override
-    public String toString() {
-        return "Player{" +
-                "id=" + id +
-                ", nickname='" + nickname + '\'' +
-                ", health=" + health +
-                ", attack=" + attack +
-                '}';
-    }
-
-    public void setAttack(int attack) {
-        this.attack = attack;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNickname() {
@@ -51,15 +48,20 @@ public class Player {
         this.nickname = nickname;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getHealth() {
+        return health;
     }
 
-    public int getId() {
-        return id;
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public int getAttack() {
         return attack;
     }
+
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 }
+

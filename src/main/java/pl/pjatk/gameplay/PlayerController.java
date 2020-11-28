@@ -23,6 +23,10 @@ public class PlayerController {
     public ResponseEntity<List<Player>> findAll(){
         return ResponseEntity.ok(playerService.findAll());
     }
+
+    @GetMapping
+    public ResponseEntity<String> hello() { return ResponseEntity.ok("Hello world");}
+
     @GetMapping("/{id}")
     public ResponseEntity<Player> findByID(@PathVariable Long id) {
         Optional<Player> optionalPlayer = playerService.findByID(id);
@@ -40,4 +44,19 @@ public class PlayerController {
         return ResponseEntity.ok(playerService.save(player));
     }
 
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        playerService.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<Player> update(@RequestBody Player player) {
+        return ResponseEntity.ok(playerService.update(player));
+    }
+
+    @GetMapping("/attack/{​​​​attackerId}​​​​/{​​​​defenderId}​​​​")
+    public ResponseEntity<Player> attackPlayer(@PathVariable Long attackerId, @PathVariable Long defenderId) {
+        return ResponseEntity.ok(playerService.attackPlayer(attackerId, defenderId));
+    }
 }

@@ -15,7 +15,7 @@ public class PlayerService {
     private PlayerRepository playerRepository;
     private DamageService damageService;
 
-    public PlayerService(PlayerRepository playerRepository, DamageService damageService) {
+    public PlayerService() {
         this.playerRepository = playerRepository;
         this.damageService = damageService;
     }

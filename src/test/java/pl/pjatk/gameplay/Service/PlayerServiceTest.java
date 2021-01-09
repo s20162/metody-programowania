@@ -68,10 +68,11 @@ class PlayerServiceTest {
         Player player1 = new Player(1L, "a", 1000, 100);
         Player player2 = new Player(2L, "b" , 1000, 100);
 
-        when(damageService.attackPlayer(player1,player2)).thenReturn(player2);
+
         when(playerRepository.findById(1L)).thenReturn(Optional.of(player1));
         when(playerRepository.findById(2L)).thenReturn(Optional.of(player2));
         when(playerRepository.save(player2)).thenReturn(player2);
+
 
         playerService.attackPlayer(player1.getId(),player2.getId());
 

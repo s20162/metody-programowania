@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import pl.pjatk.gameplay.repository.PlayerRepository;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +24,15 @@ public class PlayerService {
     }
 
     public Optional<Player> findByID(Long playerID){
-        return playerRepository.findById(playerID);
+        if (playerID == 10L) {
+            throw new RuntimeException();
+        } else {
+            return playerRepository.findById(playerID);
+        }
+    }
+
+    public void deleteAll() {
+        playerRepository.deleteAll();
     }
 
     public void deleteById(Long id) {
